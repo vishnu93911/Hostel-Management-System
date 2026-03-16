@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PG Manager Dashboard</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #1e1e2f;
+            color: white;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .sidebar {
+            width: 220px;
+            background: #111827;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .sidebar a:hover {
+            background: #374151;
+        }
+
+        .main {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .cards {
+            display: flex;
+            gap: 20px;
+        }
+
+        .card {
+            background: #2d3748;
+            padding: 20px;
+            border-radius: 10px;
+            width: 200px;
+            text-align: center;
+        }
+
+        .table {
+            margin-top: 30px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th,
+        .table td {
+            padding: 10px;
+            border-bottom: 1px solid gray;
+            text-align: center;
+        }
+
+        .table th {
+            background: #374151;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="sidebar">
+
+            <h2>PG Manager</h2>
+            
+            <a href="#">Profile</a>
+            <a href="#">Hostel Details</a>
+            <a href="/add-hostel/">Add Hostel</a>
+            <a href="/add-tenant/">Add Tenant</a>
+            <a href="{% url 'login_page' %}">Logout</a>
+
+        </div>
+
+        <div class="main">
+
+            <div class="cards">
+
+                <div class="card">
+                    <h3>{{ total_hostels }}</h3>
+                    <p>Total Hostels</p>
+                </div>
+
+                <div class="card">
+                    <h3>{{ total_tenants }}</h3>
+                    <p>Total Tenants</p>
+                </div>
+
+                <div class="card">
+                    <h3>₹{{ total_revenue }}</h3>
+                    <p>Total Revenue</p>
+                </div>
+
+            </div>
+
+
+            <h2 style="margin-top:30px;">Consolidated Hostel Details</h2>
+
+            <table class="table">
+
+                <tr>
+                    <th>Hostel Name</th>
+                    <th>Location</th>
+                    <th>Rooms</th>
+                    <th>Tenants</th>
+                    <th>Monthly Rent</th>
+                </tr>
+
+                {% for hostel in hostels %}
+
+                <tr>
+                    <td>{{ hostel.name }}</td>
+                    <td>{{ hostel.location }}</td>
+                    <td>{{ hostel.rooms }}</td>
+                    <td>{{ hostel.tenants }}</td>
+                    <td>₹{{ hostel.rent }}</td>
+                </tr>
+
+                {% endfor %}
+
+            </table>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

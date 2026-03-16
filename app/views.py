@@ -55,7 +55,7 @@ def login_page(request):
 
             if check_password(password, user.password):
                 messages.success(request, "Login Successful")
-                return redirect("/admin/")   # redirect to admin page
+                return redirect("dashboard")    
 
             else:
                 messages.error(request, "Invalid Password")
@@ -64,3 +64,8 @@ def login_page(request):
             messages.error(request, "Phone_number does not exist")
 
     return render(request, "login.html")
+
+
+
+def manager(request):
+    pass

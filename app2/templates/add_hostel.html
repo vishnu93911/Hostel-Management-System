@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add Hostel</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            width: 350px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transform: perspective(1000px) rotateX(3deg);
+            transition: 0.3s;
+        }
+
+        .container:hover {
+            transform: perspective(1000px) rotateX(0deg) scale(1.03);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #444;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: none;
+            background: #f2f2f2;
+            box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.1),
+                inset -3px -3px 5px rgba(255, 255, 255, 0.8);
+            outline: none;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Add Hostel</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <input type="text" name="name" placeholder="Hostel Name" required>
+
+            <input type="text" name="location" placeholder="Location" required>
+
+            <input type="number" name="rooms" placeholder="Total Rooms" required>
+
+            <input type="number" name="rent" placeholder="Monthly Rent" required>
+
+            <button type="submit">Add Hostel</button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
